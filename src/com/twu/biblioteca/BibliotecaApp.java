@@ -15,7 +15,11 @@ public class BibliotecaApp {
     }
 
     public void giveBookList() {
-        String[] book_list = {"The Shining | Stephen King | 1977, Pet Sematary | Stephen King | 1983, Doctor Sleep | Stephen King | 2013"};
+        Book shining = new Book("The Shining", "Stephen King", "1977");
+        Book sematary = new Book("Pet Sematary", "Stephen King",  "1983");
+        Book docSleep = new Book("Doctor Sleep", "Stephen King", "2013");
+
+        String[] book_list = {shining.giveBookDataAsString(), sematary.giveBookDataAsString(), docSleep.giveBookDataAsString()};
         printStream.println(Arrays.toString(book_list).replace("[","").replace("]",""));
     }
 }
