@@ -19,4 +19,14 @@ public class BibliotecaAppTest {
 
         verify(printStream).println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
     }
+
+    @Test
+    public void shouldPrintHardcodedListOfBooks() {
+        printStream = mock(PrintStream.class);
+        app = new BibliotecaApp(printStream);
+
+        app.giveBookList();
+
+        verify(printStream).println("The Shining, Doctor Sleep, Pet Sematary");
+    }
 }
