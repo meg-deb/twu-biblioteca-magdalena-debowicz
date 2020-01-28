@@ -21,12 +21,12 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void shouldPrintHardcodedListOfBooks() {
+    public void shouldPrintHardcodedListOfBooksWithAuthorAndYear() {
         printStream = mock(PrintStream.class);
         app = new BibliotecaApp(printStream);
 
         app.giveBookList();
 
-        verify(printStream).println("The Shining, Doctor Sleep, Pet Sematary");
+        verify(printStream).println("The Shining | Stephen King | 1977, Pet Sematary | Stephen King | 1983, Doctor Sleep | Stephen King | 2013");
     }
 }
