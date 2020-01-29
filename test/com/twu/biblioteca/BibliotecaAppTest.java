@@ -40,34 +40,34 @@ public class BibliotecaAppTest {
 
     @Test
     public void shouldShowMenuAndInvalidMessageWhenPressed99() throws IOException {
-        when(bufferedReader.readLine()).thenReturn("99");
+        when(bufferedReader.readLine()).thenReturn("99").thenReturn("1");
 
         app.showMenu();
 
         verify(printStream).println("To see the list of books, press 1:");
         verify(printStream).println("Please select a valid option!");
-        verifyNoMoreInteractions(printStream);
+        verify(printStream).println("The Shining | Stephen King | 1977, Pet Sematary | Stephen King | 1983, Doctor Sleep | Stephen King | 2013");
     }
 
     @Test
     public void shouldShowMenuAndInvalidMessageWhenPressedMinus1() throws IOException {
-        when(bufferedReader.readLine()).thenReturn("-1");
+        when(bufferedReader.readLine()).thenReturn("-1").thenReturn("1");
 
         app.showMenu();
 
         verify(printStream).println("To see the list of books, press 1:");
         verify(printStream).println("Please select a valid option!");
-        verifyNoMoreInteractions(printStream);
+        verify(printStream).println("The Shining | Stephen King | 1977, Pet Sematary | Stephen King | 1983, Doctor Sleep | Stephen King | 2013");
     }
     @Test
     public void shouldShowMenuAndInvalidMessageWhenPressed0() throws IOException {
-        when(bufferedReader.readLine()).thenReturn("0");
+        when(bufferedReader.readLine()).thenReturn("0").thenReturn("1");
 
         app.showMenu();
 
         verify(printStream).println("To see the list of books, press 1:");
         verify(printStream).println("Please select a valid option!");
-        verifyNoMoreInteractions(printStream);
+        verify(printStream).println("The Shining | Stephen King | 1977, Pet Sematary | Stephen King | 1983, Doctor Sleep | Stephen King | 2013");
     }
 
 }

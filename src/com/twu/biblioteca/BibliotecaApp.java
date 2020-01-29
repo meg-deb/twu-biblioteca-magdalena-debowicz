@@ -22,12 +22,15 @@ public class BibliotecaApp {
 
     public void showMenu() {
         printStream.println("To see the list of books, press 1:");
-        String option = readLine();
-        if(option.equals("1")){
-            giveBookList();
-        }
-        else{
-            printStream.println("Please select a valid option!");
+        while (true) {
+            String option = readLine();
+            if(!option.equals("1")){
+                printStream.println("Please select a valid option!");
+            }
+            else{
+                giveBookList();
+                return;
+            }
         }
     }
 
