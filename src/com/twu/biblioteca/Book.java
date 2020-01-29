@@ -2,9 +2,9 @@ package com.twu.biblioteca;
 
 public class Book {
     //instance variables
-    String title;
-    String author;
-    String year;
+    private String title;
+    private String author;
+    private String year;
 
     //constructor declaration
     public Book(String title, String author, String year){
