@@ -26,6 +26,9 @@ public class BibliotecaApp {
         if(option.equals("1")){
             giveBookList();
         }
+        else{
+            printStream.println("Please select a valid option!");
+        }
     }
 
     private String readLine() {

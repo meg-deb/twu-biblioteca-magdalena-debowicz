@@ -39,12 +39,34 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void shouldShowMenuOptionsAndNotBooksWhenPressed9() throws IOException {
-        when(bufferedReader.readLine()).thenReturn("9");
+    public void shouldShowMenuAndInvalidMessageWhenPressed99() throws IOException {
+        when(bufferedReader.readLine()).thenReturn("99");
 
         app.showMenu();
 
         verify(printStream).println("To see the list of books, press 1:");
+        verify(printStream).println("Please select a valid option!");
+        verifyNoMoreInteractions(printStream);
+    }
+
+    @Test
+    public void shouldShowMenuAndInvalidMessageWhenPressedMinus1() throws IOException {
+        when(bufferedReader.readLine()).thenReturn("-1");
+
+        app.showMenu();
+
+        verify(printStream).println("To see the list of books, press 1:");
+        verify(printStream).println("Please select a valid option!");
+        verifyNoMoreInteractions(printStream);
+    }
+    @Test
+    public void shouldShowMenuAndInvalidMessageWhenPressed0() throws IOException {
+        when(bufferedReader.readLine()).thenReturn("0");
+
+        app.showMenu();
+
+        verify(printStream).println("To see the list of books, press 1:");
+        verify(printStream).println("Please select a valid option!");
         verifyNoMoreInteractions(printStream);
     }
 
