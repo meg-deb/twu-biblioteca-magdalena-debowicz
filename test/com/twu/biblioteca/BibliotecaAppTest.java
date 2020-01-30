@@ -8,6 +8,8 @@ import org.mockito.Mockito;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.ArrayList;
+
 
 import static org.mockito.Mockito.*;
 
@@ -16,13 +18,28 @@ public class BibliotecaAppTest {
     private BibliotecaApp app;
     private BufferedReader bufferedReader;
     private InOrder inOrder;
+    private ArrayList<Book> testBookList;
 
     @Before
     public void setUp() {
         printStream = mock(PrintStream.class);
         bufferedReader = mock(BufferedReader.class);
         inOrder = Mockito.inOrder(printStream);
-        app = new BibliotecaApp(printStream, bufferedReader);
+        testBookList = createBookList();
+        app = new BibliotecaApp(testBookList, printStream, bufferedReader);
+    }
+
+    private ArrayList<Book> createBookList() {
+        Book shining = new Book("The Shining", "Stephen King", "1977");
+        Book sematary = new Book("Pet Sematary", "Stephen King",  "1983");
+        Book docSleep = new Book("Doctor Sleep", "Stephen King", "2013");
+
+        ArrayList<Book> bookObjectList = new ArrayList<>();
+        bookObjectList.add(shining);
+        bookObjectList.add(sematary);
+        bookObjectList.add(docSleep);
+
+        return bookObjectList;
     }
 
     @Test
