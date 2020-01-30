@@ -24,16 +24,16 @@ public class BibliotecaApp {
         printStream.println("To see the list of books, press 1. To exit, press 0.");
         while (true) {
             String option = readLine();
-            if(!option.equals("1") && !option.equals("0")){
-                printStream.println("Please select a valid option!");
-            }
-            else if(option.equals("1")){
+            if(option.equals("1")){
                 giveBookList();
                 printStream.println("To see the list of books again, press 1. To exit, press 0.");
             }
-            else if(option.equals("0")){
+            else if(option.equals("0")) {
                 printStream.println("You're exiting the application. Thank You and till next time.");
                 return;
+            }
+            else {
+                printStream.println("Please select a valid option!");
             }
         }
     }
