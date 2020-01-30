@@ -51,7 +51,9 @@ public class BibliotecaApp {
         }
 
     private void giveBookList() {
-        ArrayList<String> book_list = BookManager.createBookList();
-        printStream.println(book_list.toString().replace("[","").replace("]",""));
+        ArrayList<Book> book_list = BookManager.createBookList();
+        for(int i= 0; i < book_list.size(); i++){
+            printStream.println(book_list.get(i).giveBookDataAsString());
+        }
     }
 }

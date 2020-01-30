@@ -35,7 +35,9 @@ public class BibliotecaAppTest {
         app.showMenu();
 
         verify(printStream).println("To see the list of books, press 1. To exit, press 0.");
-        verify(printStream).println("The Shining | Stephen King | 1977, Pet Sematary | Stephen King | 1983, Doctor Sleep | Stephen King | 2013");
+        verify(printStream).println("The Shining | Stephen King | 1977");
+        verify(printStream).println("Pet Sematary | Stephen King | 1983");
+        verify(printStream).println("Doctor Sleep | Stephen King | 2013");
         verify(printStream).println("You're exiting the application. Thank You and till next time.");
     }
 
@@ -47,7 +49,9 @@ public class BibliotecaAppTest {
 
         verify(printStream).println("To see the list of books, press 1. To exit, press 0.");
         verify(printStream).println("Please select a valid option!");
-        verify(printStream).println("The Shining | Stephen King | 1977, Pet Sematary | Stephen King | 1983, Doctor Sleep | Stephen King | 2013");
+        verify(printStream).println("The Shining | Stephen King | 1977");
+        verify(printStream).println("Pet Sematary | Stephen King | 1983");
+        verify(printStream).println("Doctor Sleep | Stephen King | 2013");
         verify(printStream).println("You're exiting the application. Thank You and till next time.");
     }
 
@@ -59,7 +63,9 @@ public class BibliotecaAppTest {
 
         verify(printStream).println("To see the list of books, press 1. To exit, press 0.");
         verify(printStream).println("Please select a valid option!");
-        verify(printStream).println("The Shining | Stephen King | 1977, Pet Sematary | Stephen King | 1983, Doctor Sleep | Stephen King | 2013");
+        verify(printStream).println("The Shining | Stephen King | 1977");
+        verify(printStream).println("Pet Sematary | Stephen King | 1983");
+        verify(printStream).println("Doctor Sleep | Stephen King | 2013");
         verify(printStream).println("You're exiting the application. Thank You and till next time.");
     }
     @Test
