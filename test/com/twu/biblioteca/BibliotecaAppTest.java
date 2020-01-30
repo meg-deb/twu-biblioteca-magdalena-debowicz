@@ -1,7 +1,10 @@
 package com.twu.biblioteca;
 
+import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
 import org.junit.Before;
 import org.junit.Test;
+
 import org.mockito.InOrder;
 import org.mockito.Mockito;
 
@@ -30,9 +33,9 @@ public class BibliotecaAppTest {
     }
 
     private ArrayList<Book> createBookList() {
-        Book shining = new Book("The Shining", "Stephen King", "1977");
-        Book sematary = new Book("Pet Sematary", "Stephen King",  "1983");
-        Book docSleep = new Book("Doctor Sleep", "Stephen King", "2013");
+        Book shining = new Book("The Shining", "Stephen King", "1977", false);
+        Book sematary = new Book("Pet Sematary", "Stephen King",  "1983", false);
+        Book docSleep = new Book("Doctor Sleep", "Stephen King", "2013", false);
 
         ArrayList<Book> bookObjectList = new ArrayList<>();
         bookObjectList.add(shining);
@@ -116,6 +119,20 @@ public class BibliotecaAppTest {
         inOrder.verify(printStream).println("You've chosen The Shining | Stephen King | 1977");
         inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To exit, press 0.");
         inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
+    }
+
+    @Test
+    public void shouldReturnFalseWhenBookStatusIsFirstChecked() {
+        assertThat(false, is(testBookList.get(0).bookStatus()));
+        assertThat(false, is(testBookList.get(1).bookStatus()));
+        assertThat(false, is(testBookList.get(2).bookStatus()));
+    }
+
+    @Test
+    public void shouldReturnTrueWhenBookStatusIsChanged() {
+        assertThat(true, is(testBookList.get(0).checkOutBook()));
+        assertThat(true, is(testBookList.get(1).checkOutBook()));
+        assertThat(true, is(testBookList.get(2).checkOutBook()));
     }
 
 }

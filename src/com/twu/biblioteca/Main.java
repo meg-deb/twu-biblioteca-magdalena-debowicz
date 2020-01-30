@@ -12,9 +12,9 @@ public class Main {
     }
 
     private static ArrayList<Book> createBookList(){
-        Book shining = new Book("The Shining", "Stephen King", "1977");
-        Book sematary = new Book("Pet Sematary", "Stephen King",  "1983");
-        Book docSleep = new Book("Doctor Sleep", "Stephen King", "2013");
+        Book shining = new Book("The Shining", "Stephen King", "1977", false);
+        Book sematary = new Book("Pet Sematary", "Stephen King",  "1983", false);
+        Book docSleep = new Book("Doctor Sleep", "Stephen King", "2013", false);
 
         ArrayList<Book> bookObjectList = new ArrayList<>();
         bookObjectList.add(shining);
