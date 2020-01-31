@@ -59,9 +59,9 @@ public class BibliotecaAppTest {
         app.showMenu();
 
         inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To exit, press 0.");
-        inOrder.verify(printStream).println("The Shining | Stephen King | 1977");
-        inOrder.verify(printStream).println("Pet Sematary | Stephen King | 1983");
-        inOrder.verify(printStream).println("Doctor Sleep | Stephen King | 2013");
+        inOrder.verify(printStream).println("Book id: 1 | The Shining | Stephen King | 1977");
+        inOrder.verify(printStream).println("Book id: 2 | Pet Sematary | Stephen King | 1983");
+        inOrder.verify(printStream).println("Book id: 3 | Doctor Sleep | Stephen King | 2013");
         inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To exit, press 0.");
         inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
     }
@@ -74,9 +74,9 @@ public class BibliotecaAppTest {
 
         inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To exit, press 0.");
         inOrder.verify(printStream).println("Please select a valid option!");
-        inOrder.verify(printStream).println("The Shining | Stephen King | 1977");
-        inOrder.verify(printStream).println("Pet Sematary | Stephen King | 1983");
-        inOrder.verify(printStream).println("Doctor Sleep | Stephen King | 2013");
+        inOrder.verify(printStream).println("Book id: 1 | The Shining | Stephen King | 1977");
+        inOrder.verify(printStream).println("Book id: 2 | Pet Sematary | Stephen King | 1983");
+        inOrder.verify(printStream).println("Book id: 3 | Doctor Sleep | Stephen King | 2013");
         inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
     }
 
@@ -88,9 +88,9 @@ public class BibliotecaAppTest {
 
         inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To exit, press 0.");
         inOrder.verify(printStream).println("Please select a valid option!");
-        inOrder.verify(printStream).println("The Shining | Stephen King | 1977");
-        inOrder.verify(printStream).println("Pet Sematary | Stephen King | 1983");
-        inOrder.verify(printStream).println("Doctor Sleep | Stephen King | 2013");
+        inOrder.verify(printStream).println("Book id: 1 | The Shining | Stephen King | 1977");
+        inOrder.verify(printStream).println("Book id: 2 | Pet Sematary | Stephen King | 1983");
+        inOrder.verify(printStream).println("Book id: 3 | Doctor Sleep | Stephen King | 2013");
         inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
     }
 
@@ -112,11 +112,11 @@ public class BibliotecaAppTest {
         app.showMenu();
 
         inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To exit, press 0.");
-        inOrder.verify(printStream).println("The Shining | Stephen King | 1977");
-        inOrder.verify(printStream).println("Pet Sematary | Stephen King | 1983");
-        inOrder.verify(printStream).println("Doctor Sleep | Stephen King | 2013");
-//        inOrder.verify(printStream).println("Choose book to checkout. \n For 'The Shining' press 1. \n For 'Pet Sematary' press 2. \n For 'Doctor Sleep' press 3.");
-        inOrder.verify(printStream).println("You've chosen The Shining | Stephen King | 1977");
+        inOrder.verify(printStream).println("Book id: 1 | The Shining | Stephen King | 1977");
+        inOrder.verify(printStream).println("Book id: 2 | Pet Sematary | Stephen King | 1983");
+        inOrder.verify(printStream).println("Book id: 3 | Doctor Sleep | Stephen King | 2013");
+        inOrder.verify(printStream).println("To check out the selected book input it's id number.");
+        inOrder.verify(printStream).println("You've chosen Book id: 1 | The Shining | Stephen King | 1977");
         inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To exit, press 0.");
         inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
     }
@@ -147,8 +147,8 @@ public class BibliotecaAppTest {
         app.showMenu();
 
         inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To exit, press 0.");
-        inOrder.verify(printStream).println("Pet Sematary | Stephen King | 1983");
-        inOrder.verify(printStream).println("Doctor Sleep | Stephen King | 2013");
+        inOrder.verify(printStream).println("Book id: 2 | Pet Sematary | Stephen King | 1983");
+        inOrder.verify(printStream).println("Book id: 3 | Doctor Sleep | Stephen King | 2013");
         inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To exit, press 0.");
         inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
     }
