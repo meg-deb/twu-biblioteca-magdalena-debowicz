@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0cceffaa-458f-4276-afd1-22b7fb7ed531" name="Default Changelist" comment="" />
+    <list default="true" id="0cceffaa-458f-4276-afd1-22b7fb7ed531" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/BibliotecaAppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/BibliotecaAppTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,7 +51,7 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
-  <component name="RunManager" selected="JUnit.BibliotecaAppTest">
+  <component name="RunManager" selected="JUnit.BibliotecaAppTest.shouldShowMenuOptionsAndBookWhenPressed1">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.twu.biblioteca.Main" />
       <module name="biblioteca" />
@@ -78,7 +80,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BibliotecaAppTest.shouldAskForBookToCheckAndNotShowChosenBookInListOfBooks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BibliotecaAppTest.shouldReturnFalseWhenBookStatusIsFirstChecked" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="biblioteca" />
       <extension name="coverage">
         <pattern>
@@ -88,13 +90,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.twu.biblioteca" />
       <option name="MAIN_CLASS_NAME" value="com.twu.biblioteca.BibliotecaAppTest" />
-      <option name="METHOD_NAME" value="shouldAskForBookToCheckAndNotShowChosenBookInListOfBooks" />
+      <option name="METHOD_NAME" value="shouldReturnFalseWhenBookStatusIsFirstChecked" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BibliotecaAppTest.shouldPrintWelcomeMessage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BibliotecaAppTest.shouldReturnTrueWhenBookStatusIsChanged" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="biblioteca" />
       <extension name="coverage">
         <pattern>
@@ -104,7 +106,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.twu.biblioteca" />
       <option name="MAIN_CLASS_NAME" value="com.twu.biblioteca.BibliotecaAppTest" />
-      <option name="METHOD_NAME" value="shouldPrintWelcomeMessage" />
+      <option name="METHOD_NAME" value="shouldReturnTrueWhenBookStatusIsChanged" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -128,11 +130,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.BibliotecaAppTest" />
         <item itemvalue="JUnit.BibliotecaAppTest.shouldShowMenuOptionsAndBookWhenPressed1" />
+        <item itemvalue="JUnit.BibliotecaAppTest" />
+        <item itemvalue="JUnit.BibliotecaAppTest.shouldReturnTrueWhenBookStatusIsChanged" />
+        <item itemvalue="JUnit.BibliotecaAppTest.shouldReturnFalseWhenBookStatusIsFirstChecked" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.BibliotecaAppTest.shouldAskForBookToCheckAndNotShowChosenBookInListOfBooks" />
-        <item itemvalue="JUnit.BibliotecaAppTest.shouldPrintWelcomeMessage" />
       </list>
     </recent_temporary>
   </component>
@@ -236,7 +238,49 @@
       <option name="project" value="LOCAL" />
       <updated>1580294286221</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="refactor: Menu - placed 'valid option' print at the end">
+      <created>1580383481397</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1580383481397</updated>
+    </task>
+    <task id="LOCAL-00013" summary="refactor: Menu - placed 'valid option' print at the end">
+      <created>1580383503422</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1580383503422</updated>
+    </task>
+    <task id="LOCAL-00014" summary="refactor: giveBookList - gets list of objects instead of strings now, iterates over list with for loop">
+      <created>1580384835808</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1580384835808</updated>
+    </task>
+    <task id="LOCAL-00015" summary="feat: Menu - option that prints books to checkout (but not checkouting yet)&#10;refactor: Test - using mockito inOrder">
+      <created>1580397013710</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1580397013710</updated>
+    </task>
+    <task id="LOCAL-00016" summary="refactor: Main - has the books object list, deleted the book manager&#10;refactor: Test - has the books object list">
+      <created>1580398839028</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1580398839028</updated>
+    </task>
+    <task id="LOCAL-00017" summary="feat: Book - added bookStatus field which tells whether book is check out or not,&#10;- added functions (get/set) for the check out functionality">
+      <created>1580401636351</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1580401636351</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -244,7 +288,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -261,17 +307,26 @@
     <MESSAGE value="feat: Menu - when 1(the only valid option now) is not chosen - then &quot;select valid option&quot; is printed" />
     <MESSAGE value="refactor: Menu - when 1 is not chosen - then &quot;select valid option&quot; is printed and user is prompt until enter 1" />
     <MESSAGE value="feat: Menu - quit option added, press 0 to choose" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Menu - quit option added, press 0 to choose" />
+    <MESSAGE value="refactor: Menu - placed 'valid option' print at the end" />
+    <MESSAGE value="refactor: giveBookList - gets list of objects instead of strings now, iterates over list with for loop" />
+    <MESSAGE value="feat: Menu - option that prints books to checkout (but not checkouting yet)&#10;refactor: Test - using mockito inOrder" />
+    <MESSAGE value="refactor: Main - has the books object list, deleted the book manager&#10;refactor: Test - has the books object list" />
+    <MESSAGE value="feat: Book - added bookStatus field which tells whether book is check out or not,&#10;- added functions (get/set) for the check out functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Book - added bookStatus field which tells whether book is check out or not,&#10;- added functions (get/set) for the check out functionality" />
   </component>
   <component name="WindowStateProjectService">
     <state x="440" y="161" key="#Notifications" timestamp="1580134438228">
       <screen x="0" y="23" width="1680" height="946" />
     </state>
     <state x="440" y="161" key="#Notifications/0.23.1680.946@0.23.1680.946" timestamp="1580134438228" />
-    <state x="578" y="298" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1580217673038">
+    <state x="578" y="298" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1580397736316">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="578" y="298" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1580217673038" />
+    <state x="578" y="298" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1580397736316" />
+    <state x="536" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1580400974993">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="536" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1580400974993" />
     <state x="578" y="279" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1580226099857">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -284,52 +339,52 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="585" y="379" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1680.1050@0.0.1680.1050" timestamp="1580378662481" />
-    <state x="547" y="138" key="CommitChangelistDialog2" timestamp="1580294286015">
+    <state x="547" y="138" key="CommitChangelistDialog2" timestamp="1580401636112">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="547" y="138" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1580294286015" />
+    <state x="547" y="138" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1580401636112" />
     <state x="464" y="98" key="CommitChangelistDialog2/0.23.1680.946@0.23.1680.946" timestamp="1580203559684" />
     <state x="100" y="100" width="1480" height="850" key="DiffContextDialog" timestamp="1580382567173">
       <screen x="0" y="23" width="1680" height="946" />
     </state>
     <state x="100" y="100" width="1480" height="850" key="DiffContextDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1580382455662" />
     <state x="100" y="100" width="1480" height="850" key="DiffContextDialog/0.23.1680.946@0.23.1680.946" timestamp="1580382567173" />
-    <state width="1638" height="255" key="GridCell.Tab.0.bottom" timestamp="1580382894558">
+    <state width="1638" height="255" key="GridCell.Tab.0.bottom" timestamp="1580401484509">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="255" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1580382894558" />
+    <state width="1638" height="255" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1580401484509" />
     <state width="1638" height="331" key="GridCell.Tab.0.bottom/0.23.1680.946@0.23.1680.946" timestamp="1580203417665" />
-    <state width="1638" height="255" key="GridCell.Tab.0.center" timestamp="1580382894557">
+    <state width="1638" height="255" key="GridCell.Tab.0.center" timestamp="1580401484507">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="255" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1580382894557" />
+    <state width="1638" height="255" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1580401484507" />
     <state width="1638" height="331" key="GridCell.Tab.0.center/0.23.1680.946@0.23.1680.946" timestamp="1580203417664" />
-    <state width="1638" height="255" key="GridCell.Tab.0.left" timestamp="1580382894555">
+    <state width="1638" height="255" key="GridCell.Tab.0.left" timestamp="1580401484507">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="255" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1580382894555" />
+    <state width="1638" height="255" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1580401484507" />
     <state width="1638" height="331" key="GridCell.Tab.0.left/0.23.1680.946@0.23.1680.946" timestamp="1580203417664" />
-    <state width="1638" height="255" key="GridCell.Tab.0.right" timestamp="1580382894557">
+    <state width="1638" height="255" key="GridCell.Tab.0.right" timestamp="1580401484508">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="255" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1580382894557" />
+    <state width="1638" height="255" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1580401484508" />
     <state width="1638" height="331" key="GridCell.Tab.0.right/0.23.1680.946@0.23.1680.946" timestamp="1580203417665" />
-    <state width="1638" height="363" key="GridCell.Tab.1.bottom" timestamp="1580382894554">
+    <state width="1638" height="363" key="GridCell.Tab.1.bottom" timestamp="1580401173549">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="363" key="GridCell.Tab.1.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1580382894554" />
-    <state width="1638" height="363" key="GridCell.Tab.1.center" timestamp="1580382894553">
+    <state width="1638" height="363" key="GridCell.Tab.1.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1580401173549" />
+    <state width="1638" height="363" key="GridCell.Tab.1.center" timestamp="1580401173549">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="363" key="GridCell.Tab.1.center/0.0.1680.1050@0.0.1680.1050" timestamp="1580382894553" />
-    <state width="1638" height="363" key="GridCell.Tab.1.left" timestamp="1580382894552">
+    <state width="1638" height="363" key="GridCell.Tab.1.center/0.0.1680.1050@0.0.1680.1050" timestamp="1580401173549" />
+    <state width="1638" height="363" key="GridCell.Tab.1.left" timestamp="1580401173548">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="363" key="GridCell.Tab.1.left/0.0.1680.1050@0.0.1680.1050" timestamp="1580382894552" />
-    <state width="1638" height="363" key="GridCell.Tab.1.right" timestamp="1580382894553">
+    <state width="1638" height="363" key="GridCell.Tab.1.left/0.0.1680.1050@0.0.1680.1050" timestamp="1580401173548" />
+    <state width="1638" height="363" key="GridCell.Tab.1.right" timestamp="1580401173549">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="363" key="GridCell.Tab.1.right/0.0.1680.1050@0.0.1680.1050" timestamp="1580382894553" />
+    <state width="1638" height="363" key="GridCell.Tab.1.right/0.0.1680.1050@0.0.1680.1050" timestamp="1580401173549" />
     <state x="606" y="243" key="RollbackChangesDialog" timestamp="1580382812328">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -342,10 +397,10 @@
       <screen x="0" y="23" width="1680" height="946" />
     </state>
     <state x="632" y="207" key="VCS.ChangeListViewerDialog/0.23.1680.946@0.23.1680.946" timestamp="1580133829024" />
-    <state x="440" y="235" key="Vcs.Push.Dialog.v2" timestamp="1580294299733">
+    <state x="440" y="235" key="Vcs.Push.Dialog.v2" timestamp="1580401648715">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="440" y="235" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1580294299733" />
+    <state x="440" y="235" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1580401648715" />
     <state x="440" y="235" key="Vcs.Push.Dialog.v2/0.23.1680.946@0.23.1680.946" timestamp="1580203574206" />
     <state x="905" y="525" key="com.intellij.ide.util.TipDialog" timestamp="1580134660076">
       <screen x="0" y="23" width="1680" height="946" />
@@ -364,9 +419,10 @@
       <screen x="0" y="23" width="1680" height="946" />
     </state>
     <state x="545" y="397" key="git4idea.ui.GitResetDialog/0.23.1680.946@0.23.1680.946" timestamp="1580133830164" />
-    <state x="217" y="118" key="new project wizard" timestamp="1580119612987">
-      <screen x="0" y="23" width="1680" height="946" />
+    <state x="217" y="105" key="new project wizard" timestamp="1580408731762">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
+    <state x="217" y="105" key="new project wizard/0.0.1680.1050@0.0.1680.1050" timestamp="1580408731762" />
     <state x="217" y="118" key="new project wizard/0.23.1680.946@0.23.1680.946" timestamp="1580119612987" />
     <state x="1027" y="148" key="refactoring.ChangeSignatureDialog" timestamp="1580117573318">
       <screen x="0" y="0" width="1680" height="1050" />

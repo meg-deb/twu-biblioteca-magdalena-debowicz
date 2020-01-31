@@ -33,9 +33,9 @@ public class BibliotecaAppTest {
     }
 
     private ArrayList<Book> createBookList() {
-        Book shining = new Book("The Shining", "Stephen King", "1977", false);
-        Book sematary = new Book("Pet Sematary", "Stephen King",  "1983", false);
-        Book docSleep = new Book("Doctor Sleep", "Stephen King", "2013", false);
+        Book shining = new Book("The Shining", "Stephen King", "1977");
+        Book sematary = new Book("Pet Sematary", "Stephen King",  "1983");
+        Book docSleep = new Book("Doctor Sleep", "Stephen King", "2013");
 
         ArrayList<Book> bookObjectList = new ArrayList<>();
         bookObjectList.add(shining);
@@ -115,7 +115,7 @@ public class BibliotecaAppTest {
         inOrder.verify(printStream).println("The Shining | Stephen King | 1977");
         inOrder.verify(printStream).println("Pet Sematary | Stephen King | 1983");
         inOrder.verify(printStream).println("Doctor Sleep | Stephen King | 2013");
-        inOrder.verify(printStream).println("Choose book to checkout. \n For 'The Shining' press 1. \n For 'Pet Sematary' press 2. \n For 'Doctor Sleep' press 3.");
+//        inOrder.verify(printStream).println("Choose book to checkout. \n For 'The Shining' press 1. \n For 'Pet Sematary' press 2. \n For 'Doctor Sleep' press 3.");
         inOrder.verify(printStream).println("You've chosen The Shining | Stephen King | 1977");
         inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To exit, press 0.");
         inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
@@ -123,16 +123,34 @@ public class BibliotecaAppTest {
 
     @Test
     public void shouldReturnFalseWhenBookStatusIsFirstChecked() {
-        assertThat(false, is(testBookList.get(0).bookStatus()));
-        assertThat(false, is(testBookList.get(1).bookStatus()));
-        assertThat(false, is(testBookList.get(2).bookStatus()));
+        assertThat(false, is(testBookList.get(0).isCheckedOut()));
+        assertThat(false, is(testBookList.get(1).isCheckedOut()));
+        assertThat(false, is(testBookList.get(2).isCheckedOut()));
     }
 
     @Test
     public void shouldReturnTrueWhenBookStatusIsChanged() {
-        assertThat(true, is(testBookList.get(0).checkOutBook()));
-        assertThat(true, is(testBookList.get(1).checkOutBook()));
-        assertThat(true, is(testBookList.get(2).checkOutBook()));
+        testBookList.get(0).checkOutBook();
+        assertThat(true, is(testBookList.get(0).isCheckedOut()));
+        testBookList.get(1).checkOutBook();
+        assertThat(true, is(testBookList.get(1).isCheckedOut()));
+        testBookList.get(2).checkOutBook();
+        assertThat(true, is(testBookList.get(2).isCheckedOut()));
+    }
+
+    @Test
+    public void shouldShowUpdatedBookListAfterCheckOut() throws IOException {
+        testBookList.get(0).checkOutBook();
+
+        when(bufferedReader.readLine()).thenReturn("1").thenReturn("0");
+
+        app.showMenu();
+
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To exit, press 0.");
+        inOrder.verify(printStream).println("Pet Sematary | Stephen King | 1983");
+        inOrder.verify(printStream).println("Doctor Sleep | Stephen King | 2013");
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To exit, press 0.");
+        inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
     }
 
 }
