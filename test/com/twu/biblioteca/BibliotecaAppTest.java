@@ -165,7 +165,7 @@ public class BibliotecaAppTest {
         app.showMenu();
 
         inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To exit, press 0.");
-        inOrder.verify(printStream).println("Sorry no books to borrow!");
+        inOrder.verify(printStream).println("Sorry no books available!");
         inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To exit, press 0.");
         inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
     }
@@ -183,6 +183,22 @@ public class BibliotecaAppTest {
         inOrder.verify(printStream).println("Book id: 3 | Doctor Sleep | Stephen King | 2013");
         inOrder.verify(printStream).println("To check out the selected book - type id number.");
         inOrder.verify(printStream).println("Sorry, that book is not available");
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To exit, press 0.");
+        inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
+    }
+
+    @Test
+    public void shouldNotAskForSelectionWhenAllBooksCheckedOut() throws IOException {
+        testBookList.get(0).checkOutBook();
+        testBookList.get(1).checkOutBook();
+        testBookList.get(2).checkOutBook();
+
+        when(bufferedReader.readLine()).thenReturn("2").thenReturn("0");
+
+        app.showMenu();
+
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To exit, press 0.");
+        inOrder.verify(printStream).println("Sorry no books available!");
         inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To exit, press 0.");
         inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
     }

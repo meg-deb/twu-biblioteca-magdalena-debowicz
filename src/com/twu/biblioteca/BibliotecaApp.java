@@ -28,10 +28,13 @@ public class BibliotecaApp {
             String option = readLine();
             switch (option) {
                 case "1":
-                    printBookList();
+                    printAvailableBooksList();
                     break;
                 case "2":
-                    printBookList();
+                    int availableBooksSize = printAvailableBooksList();
+                    if(availableBooksSize == 0){
+                        break;
+                    }
                     printStream.println("To check out the selected book - type id number.");
                     String userBookId = readLine();
                     int bookIndex = (Integer.parseInt(userBookId) - 1);
@@ -65,7 +68,7 @@ public class BibliotecaApp {
         return option;
     }
 
-    private void printBookList() {
+    private int printAvailableBooksList() {
         ArrayList<String> availableBooksForPrint = new ArrayList<>();
 
         for (Book book : bookObjectList) {
@@ -74,11 +77,13 @@ public class BibliotecaApp {
             }
         }
         if (availableBooksForPrint.size() == 0) {
-            printStream.println("Sorry no books to borrow!");
-        } else {
+            printStream.println("Sorry no books available!");
+        }
+        else {
             for (String bookForPrint : availableBooksForPrint) {
                 printStream.println(bookForPrint);
             }
         }
+        return availableBooksForPrint.size();
     }
 }
