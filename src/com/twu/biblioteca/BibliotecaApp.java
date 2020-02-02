@@ -26,20 +26,29 @@ public class BibliotecaApp {
         while (true) {
             printStream.println("To see the list of books, press 1. To checkout book press 2. To exit, press 0.");
             String option = readLine();
-            if (option.equals("1")) {
-                giveBookList();
-            } else if (option.equals("2")) {
-                giveBookList();
-                printStream.println("To check out the selected book input it's id number.");
-                String userBook = readLine();
-                int bookIndex = (Integer.parseInt(userBook) - 1);
-                printStream.println("You've chosen " + bookObjectList.get(bookIndex).giveBookDataAsString());
-                bookObjectList.get(bookIndex).checkOutBook();
-            } else if (option.equals("0")) {
-                printStream.println("You're exiting the application. Thank You and till next time.");
-                return;
-            } else {
-                printStream.println("Please select a valid option!");
+            switch (option) {
+                case "1":
+                    printBookList();
+                    break;
+                case "2":
+                    printBookList();
+                    printStream.println("To check out the selected book - type id number.");
+                    String userBookId = readLine();
+                    int bookIndex = (Integer.parseInt(userBookId) - 1);
+                    if (bookObjectList.get(bookIndex).isCheckedOut()) {
+                        printStream.println("Sorry, that book is not available");
+                    } else {
+                        printStream.println("You've chosen " + bookObjectList.get(bookIndex).giveBookDataAsString());
+                        bookObjectList.get(bookIndex).checkOutBook();
+                        printStream.println("Thank You! Enjoy the book");
+                    }
+                    break;
+                case "0":
+                    printStream.println("You're exiting the application. Thank You and till next time.");
+                    return;
+                default:
+                    printStream.println("Please select a valid option!");
+                    break;
             }
         }
     }
@@ -56,18 +65,19 @@ public class BibliotecaApp {
         return option;
     }
 
-    private void giveBookList() {
-        ArrayList<String> bookListForPrint = new ArrayList<>();
-        for (int i = 0; i < bookObjectList.size(); i++) {
-            if (!bookObjectList.get(i).isCheckedOut()) {
-                bookListForPrint.add(bookObjectList.get(i).giveBookDataAsString());
+    private void printBookList() {
+        ArrayList<String> availableBooksForPrint = new ArrayList<>();
+
+        for (Book book : bookObjectList) {
+            if (!book.isCheckedOut()) {
+                availableBooksForPrint.add(book.giveBookDataAsString());
             }
         }
-        if (bookListForPrint.size() == 0) {
+        if (availableBooksForPrint.size() == 0) {
             printStream.println("Sorry no books to borrow!");
         } else {
-            for (int i = 0; i < bookListForPrint.size(); i++) {
-                printStream.println(bookListForPrint.get(i));
+            for (String bookForPrint : availableBooksForPrint) {
+                printStream.println(bookForPrint);
             }
         }
     }

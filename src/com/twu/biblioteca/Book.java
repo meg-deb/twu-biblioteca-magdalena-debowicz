@@ -1,22 +1,19 @@
 package com.twu.biblioteca;
 
 public class Book {
-    //instance variables
+    //instance variables/ class fields
+    private int id;
     private String title;
     private String author;
     private String year;
     private boolean checkedOut = false;
-    static int count = 0;
-    private int id;
 
     //constructor declaration
-    public Book(String title, String author, String year){
+    public Book( int id, String title, String author, String year){
+        this.id = id;
         this.title = title;
         this.author = author;
         this.year = year;
-
-        count = count + 1;
-        id = count;
     }
 
     public String giveBookDataAsString() {

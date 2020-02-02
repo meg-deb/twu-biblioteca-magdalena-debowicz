@@ -33,9 +33,9 @@ public class BibliotecaAppTest {
     }
 
     private ArrayList<Book> createBookList() {
-        Book shining = new Book("The Shining", "Stephen King", "1977");
-        Book sematary = new Book("Pet Sematary", "Stephen King",  "1983");
-        Book docSleep = new Book("Doctor Sleep", "Stephen King", "2013");
+        Book shining = new Book(1,"The Shining", "Stephen King", "1977");
+        Book sematary = new Book(2,"Pet Sematary", "Stephen King",  "1983");
+        Book docSleep = new Book(3,"Doctor Sleep", "Stephen King", "2013");
 
         ArrayList<Book> bookObjectList = new ArrayList<>();
         bookObjectList.add(shining);
@@ -115,8 +115,9 @@ public class BibliotecaAppTest {
         inOrder.verify(printStream).println("Book id: 1 | The Shining | Stephen King | 1977");
         inOrder.verify(printStream).println("Book id: 2 | Pet Sematary | Stephen King | 1983");
         inOrder.verify(printStream).println("Book id: 3 | Doctor Sleep | Stephen King | 2013");
-        inOrder.verify(printStream).println("To check out the selected book input it's id number.");
+        inOrder.verify(printStream).println("To check out the selected book - type id number.");
         inOrder.verify(printStream).println("You've chosen Book id: 1 | The Shining | Stephen King | 1977");
+        inOrder.verify(printStream).println("Thank You! Enjoy the book");
         inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To exit, press 0.");
         inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
     }
