@@ -154,4 +154,20 @@ public class BibliotecaAppTest {
         inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
     }
 
+    @Test
+    public void shouldPrintMessageWhenBookListEmpty() throws IOException {
+        testBookList.get(0).checkOutBook();
+        testBookList.get(1).checkOutBook();
+        testBookList.get(2).checkOutBook();
+
+        when(bufferedReader.readLine()).thenReturn("1").thenReturn("0");
+
+        app.showMenu();
+
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To exit, press 0.");
+        inOrder.verify(printStream).println("Sorry no books to borrow!");
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To exit, press 0.");
+        inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
+    }
+
 }
