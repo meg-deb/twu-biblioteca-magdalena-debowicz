@@ -170,4 +170,21 @@ public class BibliotecaAppTest {
         inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
     }
 
+    @Test
+    public void shouldPrintMessageWhenBookCheckedOut() throws IOException {
+        testBookList.get(0).checkOutBook();
+
+        when(bufferedReader.readLine()).thenReturn("2").thenReturn("1").thenReturn("2").thenReturn("1").thenReturn("0");
+
+        app.showMenu();
+
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To exit, press 0.");
+        inOrder.verify(printStream).println("Book id: 2 | Pet Sematary | Stephen King | 1983");
+        inOrder.verify(printStream).println("Book id: 3 | Doctor Sleep | Stephen King | 2013");
+        inOrder.verify(printStream).println("To check out the selected book - type id number.");
+        inOrder.verify(printStream).println("Sorry, that book is not available");
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To exit, press 0.");
+        inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
+    }
+
 }
