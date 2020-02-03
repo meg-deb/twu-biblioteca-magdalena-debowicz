@@ -54,10 +54,13 @@ public class BibliotecaApp {
                     printStream.println("To return the selected book - type id number.");
                     String userBookIdNumber = readLine();
                     int returnBookIndex = (Integer.parseInt(userBookIdNumber) - 1);
-
-                    printStream.println("You've chosen " + bookObjectList.get(returnBookIndex).giveBookDataAsString());
-                    bookObjectList.get(returnBookIndex).returnBook();
-                    printStream.println("Thank You for returning the book");
+                    if (!bookObjectList.get(returnBookIndex).isCheckedOut()) {
+                        printStream.println("That is not a valid book to return");
+                    } else {
+                        printStream.println("You've chosen " + bookObjectList.get(returnBookIndex).giveBookDataAsString());
+                        bookObjectList.get(returnBookIndex).returnBook();
+                        printStream.println("Thank You for returning the book");
+                    }
                     break;
                 case "0":
                     printStream.println("You're exiting the application. Thank You and till next time.");
