@@ -222,7 +222,7 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void shouldShowUpdatedBookListAfterBookReturn() throws IOException {
+    public void shouldShowMessageAndUpdatedBookListAfterBookReturn() throws IOException {
         testBookList.get(0).checkOutBook();
 
         when(bufferedReader.readLine()).thenReturn("1").thenReturn("3").thenReturn("1").thenReturn("1").thenReturn("0");
@@ -236,6 +236,7 @@ public class BibliotecaAppTest {
         inOrder.verify(printStream).println("Book id: 1 | The Shining | Stephen King | 1977");
         inOrder.verify(printStream).println("To return the selected book - type id number.");
         inOrder.verify(printStream).println("You've chosen Book id: 1 | The Shining | Stephen King | 1977");
+        inOrder.verify(printStream).println("Thank You for returning the book");
         inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To exit, press 0.");
         inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
     }

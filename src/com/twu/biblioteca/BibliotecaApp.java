@@ -57,6 +57,7 @@ public class BibliotecaApp {
 
                     printStream.println("You've chosen " + bookObjectList.get(returnBookIndex).giveBookDataAsString());
                     bookObjectList.get(returnBookIndex).returnBook();
+                    printStream.println("Thank You for returning the book");
                     break;
                 case "0":
                     printStream.println("You're exiting the application. Thank You and till next time.");
