@@ -28,10 +28,10 @@ public class BibliotecaApp {
             String option = readLine();
             switch (option) {
                 case "1":
-                    printBooksList("checkoutBooks");
+                    printBooksList(false, "Sorry no books available!");
                     break;
                 case "2":
-                    int availableToCheckOutBooksSize = printBooksList("checkoutBooks");
+                    int availableToCheckOutBooksSize = printBooksList(false,"Sorry no books available!");
                     if(availableToCheckOutBooksSize == 0){
                         break;
                     }
@@ -47,7 +47,7 @@ public class BibliotecaApp {
                     }
                     break;
                 case "3":
-                    int availableToReturnBooksSize = printBooksList("returnBooks");
+                    int availableToReturnBooksSize = printBooksList(true,"Sorry no books to return!");
                     if(availableToReturnBooksSize == 0){
                         break;
                     }
@@ -84,41 +84,26 @@ public class BibliotecaApp {
         return option;
     }
 
-    private int printBooksList(String listToPrint) {
-        ArrayList<String> booksForPrint = new ArrayList<>();
-
-        if (listToPrint.equals("checkoutBooks")) {
-
-            for (Book book : bookObjectList) {
-                if (!book.isCheckedOut()) {
-                    booksForPrint.add(book.giveBookDataAsString());
-                }
-            }
+    private int printBooksList(boolean bookAvailability, String messageToPrint) {
+        ArrayList<String> booksForPrint = giveBooksList(bookAvailability);
             if (booksForPrint.size() == 0) {
-                printStream.println("Sorry no books available!");
+                printStream.println(messageToPrint);
             }
             else {
                 for (String bookForPrint : booksForPrint) {
                     printStream.println(bookForPrint);
                 }
             }
-        }
-        else if(listToPrint.equals("returnBooks")){
-            for (Book book : bookObjectList) {
-                if (book.isCheckedOut()) {
-                    booksForPrint.add(book.giveBookDataAsString());
-                }
-            }
-            if (booksForPrint.size() == 0) {
-                printStream.println("Sorry no books to return!");
-            }
-            else {
-                for (String bookForPrint : booksForPrint) {
-                    printStream.println(bookForPrint);
-                }
-            }
-        }
         return booksForPrint.size();
     }
 
+    private ArrayList<String> giveBooksList(boolean bookAvailability) {
+        ArrayList<String> booksList = new ArrayList<>();
+        for (Book book : bookObjectList) {
+            if (book.isCheckedOut() == bookAvailability) {
+                booksList.add(book.giveBookDataAsString());
+            }
+        }
+        return booksList;
+    }
 }
