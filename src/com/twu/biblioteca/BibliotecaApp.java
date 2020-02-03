@@ -24,27 +24,39 @@ public class BibliotecaApp {
 
     public void showMenu() {
         while (true) {
-            printStream.println("To see the list of books, press 1. To checkout book press 2. To exit, press 0.");
+            printStream.println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To exit, press 0.");
             String option = readLine();
             switch (option) {
                 case "1":
                     printAvailableBooksList();
                     break;
                 case "2":
-                    int availableBooksSize = printAvailableBooksList();
-                    if(availableBooksSize == 0){
+                    int availableToCheckOutBooksSize = printAvailableBooksList();
+                    if(availableToCheckOutBooksSize == 0){
                         break;
                     }
                     printStream.println("To check out the selected book - type id number.");
                     String userBookId = readLine();
-                    int bookIndex = (Integer.parseInt(userBookId) - 1);
-                    if (bookObjectList.get(bookIndex).isCheckedOut()) {
+                    int checkOutBookIndex = (Integer.parseInt(userBookId) - 1);
+                    if (bookObjectList.get(checkOutBookIndex).isCheckedOut()) {
                         printStream.println("Sorry, that book is not available");
                     } else {
-                        printStream.println("You've chosen " + bookObjectList.get(bookIndex).giveBookDataAsString());
-                        bookObjectList.get(bookIndex).checkOutBook();
+                        printStream.println("You've chosen " + bookObjectList.get(checkOutBookIndex).giveBookDataAsString());
+                        bookObjectList.get(checkOutBookIndex).checkOutBook();
                         printStream.println("Thank You! Enjoy the book");
                     }
+                    break;
+                case "3":
+                    int availableToReturnBooksSize = printAvailableToReturnBooksList();
+                    if(availableToReturnBooksSize == 0){
+                        break;
+                    }
+                    printStream.println("To return the selected book - type id number.");
+                    String userBookIdNumber = readLine();
+                    int returnBookIndex = (Integer.parseInt(userBookIdNumber) - 1);
+
+                    printStream.println("You've chosen " + bookObjectList.get(returnBookIndex).giveBookDataAsString());
+                    bookObjectList.get(returnBookIndex).returnBook();
                     break;
                 case "0":
                     printStream.println("You're exiting the application. Thank You and till next time.");
@@ -86,4 +98,24 @@ public class BibliotecaApp {
         }
         return availableBooksForPrint.size();
     }
+
+    private int printAvailableToReturnBooksList() {
+        ArrayList<String> availableToReturnBooksForPrint = new ArrayList<>();
+
+        for (Book book : bookObjectList) {
+            if (book.isCheckedOut()) {
+                availableToReturnBooksForPrint.add(book.giveBookDataAsString());
+            }
+        }
+        if (availableToReturnBooksForPrint.size() == 0) {
+            printStream.println("Sorry no books to return!");
+        }
+        else {
+            for (String bookForPrint : availableToReturnBooksForPrint) {
+                printStream.println(bookForPrint);
+            }
+        }
+        return availableToReturnBooksForPrint.size();
+    }
+
 }
