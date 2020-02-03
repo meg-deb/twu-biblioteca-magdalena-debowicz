@@ -27,4 +27,9 @@ public class Book {
     public void checkOutBook(){
         checkedOut = true;
     }
+
+    public void returnBook(){
+        checkedOut = false;
+    }
+
 }

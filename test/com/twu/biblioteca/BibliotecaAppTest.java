@@ -130,7 +130,7 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void shouldReturnTrueWhenBookStatusIsChanged() {
+    public void shouldReturnTrueWhenBookIsCheckedOut() {
         testBookList.get(0).checkOutBook();
         assertThat(true, is(testBookList.get(0).isCheckedOut()));
         testBookList.get(1).checkOutBook();
@@ -203,4 +203,21 @@ public class BibliotecaAppTest {
         inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
     }
 
+    @Test
+    public void shouldReturnFalseWhenBookIsReturned() {
+        testBookList.get(0).checkOutBook();
+        assertThat(true, is(testBookList.get(0).isCheckedOut()));
+        testBookList.get(0).returnBook();
+        assertThat(false, is(testBookList.get(0).isCheckedOut()));
+
+        testBookList.get(1).checkOutBook();
+        assertThat(true, is(testBookList.get(1).isCheckedOut()));
+        testBookList.get(1).returnBook();
+        assertThat(false, is(testBookList.get(1).isCheckedOut()));
+
+        testBookList.get(2).checkOutBook();
+        assertThat(true, is(testBookList.get(2).isCheckedOut()));
+        testBookList.get(2).returnBook();
+        assertThat(false, is(testBookList.get(2).isCheckedOut()));
+    }
 }
