@@ -10,11 +10,13 @@ public class BibliotecaApp {
     private PrintStream printStream;
     private BufferedReader bufferedReader;
     private ArrayList<Book> bookObjectList;
+    private ArrayList<Movie> moviesObjectList;
 
-    public BibliotecaApp(ArrayList<Book> bookObjectList, PrintStream printStream, BufferedReader bufferedReader) {
+    public BibliotecaApp(ArrayList<Book> bookObjectList, PrintStream printStream, BufferedReader bufferedReader, ArrayList<Movie> moviesObjectList) {
         this.printStream = printStream;
         this.bufferedReader = bufferedReader;
         this.bookObjectList = bookObjectList;
+        this.moviesObjectList = moviesObjectList;
     }
 
     public void giveWelcome() {
@@ -24,7 +26,7 @@ public class BibliotecaApp {
 
     public void showMenu() {
         while (true) {
-            printStream.println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To exit, press 0.");
+            printStream.println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To see list of movies press 4. To exit, press 0.");
             String option = readLine();
             switch (option) {
                 case "1":
@@ -61,6 +63,9 @@ public class BibliotecaApp {
                         bookObjectList.get(returnBookIndex).returnBook();
                         printStream.println("Thank You for returning the book");
                     }
+                    break;
+                case "4":
+                    printMovieList();
                     break;
                 case "0":
                     printStream.println("You're exiting the application. Thank You and till next time.");
@@ -106,4 +111,11 @@ public class BibliotecaApp {
         }
         return booksList;
     }
+
+    private void printMovieList() {
+        for (Movie movie : moviesObjectList) {
+            printStream.println(movie.giveMovieDataAsString());
+        }
+    }
+
 }

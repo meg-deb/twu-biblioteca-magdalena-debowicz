@@ -22,6 +22,7 @@ public class BibliotecaAppTest {
     private BufferedReader bufferedReader;
     private InOrder inOrder;
     private ArrayList<Book> testBookList;
+    private ArrayList<Movie> testMovieList;
 
     @Before
     public void setUp() {
@@ -29,7 +30,8 @@ public class BibliotecaAppTest {
         bufferedReader = mock(BufferedReader.class);
         inOrder = Mockito.inOrder(printStream);
         testBookList = createBookList();
-        app = new BibliotecaApp(testBookList, printStream, bufferedReader);
+        testMovieList = createMovieList();
+        app = new BibliotecaApp(testBookList, printStream, bufferedReader, testMovieList);
     }
 
     private ArrayList<Book> createBookList() {
@@ -45,6 +47,20 @@ public class BibliotecaAppTest {
         return bookObjectList;
     }
 
+    private ArrayList<Movie> createMovieList(){
+        Movie shining = new Movie(21,"The Shining", "Stanley Kubrick", "1980","8.4");
+        Movie sematary = new Movie(22,"Pet Sematary", "Mary Lambert", "1989", "6.6");
+        Movie docSleep = new Movie(23,"Doctor Sleep", "Mike Flanagan", "2019", "7.5");
+
+        ArrayList<Movie> movieObjectList = new ArrayList<>();
+        movieObjectList.add(shining);
+        movieObjectList.add(sematary);
+        movieObjectList.add(docSleep);
+
+        return movieObjectList;
+    }
+
+
     @Test
     public void shouldPrintWelcomeMessage() {
         app.giveWelcome();
@@ -58,11 +74,11 @@ public class BibliotecaAppTest {
 
         app.showMenu();
 
-        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To exit, press 0.");
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To see list of movies press 4. To exit, press 0.");
         inOrder.verify(printStream).println("Book id: 1 | The Shining | Stephen King | 1977");
         inOrder.verify(printStream).println("Book id: 2 | Pet Sematary | Stephen King | 1983");
         inOrder.verify(printStream).println("Book id: 3 | Doctor Sleep | Stephen King | 2013");
-        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To exit, press 0.");
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To see list of movies press 4. To exit, press 0.");
         inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
     }
 
@@ -72,7 +88,7 @@ public class BibliotecaAppTest {
 
         app.showMenu();
 
-        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To exit, press 0.");
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To see list of movies press 4. To exit, press 0.");
         inOrder.verify(printStream).println("Please select a valid option!");
         inOrder.verify(printStream).println("Book id: 1 | The Shining | Stephen King | 1977");
         inOrder.verify(printStream).println("Book id: 2 | Pet Sematary | Stephen King | 1983");
@@ -86,7 +102,7 @@ public class BibliotecaAppTest {
 
         app.showMenu();
 
-        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To exit, press 0.");
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To see list of movies press 4. To exit, press 0.");
         inOrder.verify(printStream).println("Please select a valid option!");
         inOrder.verify(printStream).println("Book id: 1 | The Shining | Stephen King | 1977");
         inOrder.verify(printStream).println("Book id: 2 | Pet Sematary | Stephen King | 1983");
@@ -100,7 +116,7 @@ public class BibliotecaAppTest {
 
         app.showMenu();
 
-        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To exit, press 0.");
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To see list of movies press 4. To exit, press 0.");
         inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
         verifyNoMoreInteractions(printStream);
     }
@@ -111,14 +127,14 @@ public class BibliotecaAppTest {
 
         app.showMenu();
 
-        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To exit, press 0.");
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To see list of movies press 4. To exit, press 0.");
         inOrder.verify(printStream).println("Book id: 1 | The Shining | Stephen King | 1977");
         inOrder.verify(printStream).println("Book id: 2 | Pet Sematary | Stephen King | 1983");
         inOrder.verify(printStream).println("Book id: 3 | Doctor Sleep | Stephen King | 2013");
         inOrder.verify(printStream).println("To check out the selected book - type id number.");
         inOrder.verify(printStream).println("You've chosen Book id: 1 | The Shining | Stephen King | 1977");
         inOrder.verify(printStream).println("Thank You! Enjoy the book");
-        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To exit, press 0.");
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To see list of movies press 4. To exit, press 0.");
         inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
     }
 
@@ -147,10 +163,10 @@ public class BibliotecaAppTest {
 
         app.showMenu();
 
-        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To exit, press 0.");
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To see list of movies press 4. To exit, press 0.");
         inOrder.verify(printStream).println("Book id: 2 | Pet Sematary | Stephen King | 1983");
         inOrder.verify(printStream).println("Book id: 3 | Doctor Sleep | Stephen King | 2013");
-        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To exit, press 0.");
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To see list of movies press 4. To exit, press 0.");
         inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
     }
 
@@ -164,9 +180,9 @@ public class BibliotecaAppTest {
 
         app.showMenu();
 
-        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To exit, press 0.");
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To see list of movies press 4. To exit, press 0.");
         inOrder.verify(printStream).println("Sorry no books available!");
-        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To exit, press 0.");
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To see list of movies press 4. To exit, press 0.");
         inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
     }
 
@@ -178,12 +194,12 @@ public class BibliotecaAppTest {
 
         app.showMenu();
 
-        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To exit, press 0.");
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To see list of movies press 4. To exit, press 0.");
         inOrder.verify(printStream).println("Book id: 2 | Pet Sematary | Stephen King | 1983");
         inOrder.verify(printStream).println("Book id: 3 | Doctor Sleep | Stephen King | 2013");
         inOrder.verify(printStream).println("To check out the selected book - type id number.");
         inOrder.verify(printStream).println("Sorry, that book is not available");
-        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To exit, press 0.");
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To see list of movies press 4. To exit, press 0.");
         inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
     }
 
@@ -197,9 +213,9 @@ public class BibliotecaAppTest {
 
         app.showMenu();
 
-        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To exit, press 0.");
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To see list of movies press 4. To exit, press 0.");
         inOrder.verify(printStream).println("Sorry no books available!");
-        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To exit, press 0.");
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To see list of movies press 4. To exit, press 0.");
         inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
     }
 
@@ -229,15 +245,15 @@ public class BibliotecaAppTest {
 
         app.showMenu();
 
-        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To exit, press 0.");
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To see list of movies press 4. To exit, press 0.");
         inOrder.verify(printStream).println("Book id: 2 | Pet Sematary | Stephen King | 1983");
         inOrder.verify(printStream).println("Book id: 3 | Doctor Sleep | Stephen King | 2013");
-        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To exit, press 0.");
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To see list of movies press 4. To exit, press 0.");
         inOrder.verify(printStream).println("Book id: 1 | The Shining | Stephen King | 1977");
         inOrder.verify(printStream).println("To return the selected book - type id number.");
         inOrder.verify(printStream).println("You've chosen Book id: 1 | The Shining | Stephen King | 1977");
         inOrder.verify(printStream).println("Thank You for returning the book");
-        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To exit, press 0.");
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To see list of movies press 4. To exit, press 0.");
         inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
     }
 
@@ -247,9 +263,9 @@ public class BibliotecaAppTest {
 
         app.showMenu();
 
-        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To exit, press 0.");
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To see list of movies press 4. To exit, press 0.");
         inOrder.verify(printStream).println("Sorry no books to return!");
-        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To exit, press 0.");
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To see list of movies press 4. To exit, press 0.");
         inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
     }
 
@@ -261,11 +277,25 @@ public class BibliotecaAppTest {
 
         app.showMenu();
 
-        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To exit, press 0.");
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To see list of movies press 4. To exit, press 0.");
         inOrder.verify(printStream).println("Book id: 1 | The Shining | Stephen King | 1977");
         inOrder.verify(printStream).println("To return the selected book - type id number.");
         inOrder.verify(printStream).println("That is not a valid book to return");
-        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To exit, press 0.");
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To see list of movies press 4. To exit, press 0.");
+        inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
+    }
+
+    @Test
+    public void shouldPrintListOfMovies() throws IOException {
+        when(bufferedReader.readLine()).thenReturn("4").thenReturn("0");
+
+        app.showMenu();
+
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To see list of movies press 4. To exit, press 0.");
+        inOrder.verify(printStream).println("Movie id: 21 | The Shining | Stanley Kubrick | 1980 | Rating: 8.4");
+        inOrder.verify(printStream).println("Movie id: 22 | Pet Sematary | Mary Lambert | 1989 | Rating: 6.6");
+        inOrder.verify(printStream).println("Movie id: 23 | Doctor Sleep | Mike Flanagan | 2019 | Rating: 7.5");
+        inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To see list of movies press 4. To exit, press 0.");
         inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
     }
 

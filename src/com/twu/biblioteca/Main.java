@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        BibliotecaApp app = new BibliotecaApp(createBookList(), System.out, new BufferedReader(new InputStreamReader(System.in)));
+        BibliotecaApp app = new BibliotecaApp(createBookList(), System.out, new BufferedReader(new InputStreamReader(System.in)), createMovieList());
         app.giveWelcome();
         app.showMenu();
     }
@@ -23,4 +23,18 @@ public class Main {
 
         return bookObjectList;
     }
+
+    private static ArrayList<Movie> createMovieList(){
+        Movie shining = new Movie(21,"The Shining", "Stanley Kubrick", "1980","8.4");
+        Movie sematary = new Movie(22,"Pet Sematary", "Mary Lambert", "1989", "6.6");
+        Movie docSleep = new Movie(23,"Doctor Sleep", "Mike Flanagan", "2019", "7.5");
+
+        ArrayList<Movie> movieObjectList = new ArrayList<>();
+        movieObjectList.add(shining);
+        movieObjectList.add(sematary);
+        movieObjectList.add(docSleep);
+
+        return movieObjectList;
+    }
+
 }
