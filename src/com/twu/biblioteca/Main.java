@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        BibliotecaApp app = new BibliotecaApp(createBookList(), System.out, new BufferedReader(new InputStreamReader(System.in)), createMovieList());
+        BibliotecaApp app = new BibliotecaApp(createBookList(), createMovieList(), System.out, new BufferedReader(new InputStreamReader(System.in)));
         app.giveWelcome();
         app.showMenu();
     }

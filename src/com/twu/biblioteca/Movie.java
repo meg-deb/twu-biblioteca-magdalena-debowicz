@@ -7,6 +7,7 @@ public class Movie {
     private String director;
     private String year;
     private String rating;
+    private boolean checkedOut = false;
 
     //constructor declaration
     public Movie( int id, String title, String director, String year, String rating){
@@ -19,6 +20,14 @@ public class Movie {
 
     public String giveMovieDataAsString() {
         return "Movie id: " + id + " | " + title + " | " + director + " | " + year + " | " + "Rating: " + rating;
+    }
+
+    public boolean isCheckedOut() {
+        return checkedOut;
+    }
+
+    public void checkOutMovie(){
+        checkedOut = true;
     }
 
 }

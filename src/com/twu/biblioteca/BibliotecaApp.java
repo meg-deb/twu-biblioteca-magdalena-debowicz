@@ -12,7 +12,7 @@ public class BibliotecaApp {
     private ArrayList<Book> bookObjectList;
     private ArrayList<Movie> moviesObjectList;
 
-    public BibliotecaApp(ArrayList<Book> bookObjectList, PrintStream printStream, BufferedReader bufferedReader, ArrayList<Movie> moviesObjectList) {
+    public BibliotecaApp(ArrayList<Book> bookObjectList,  ArrayList<Movie> moviesObjectList, PrintStream printStream, BufferedReader bufferedReader) {
         this.printStream = printStream;
         this.bufferedReader = bufferedReader;
         this.bookObjectList = bookObjectList;
@@ -89,10 +89,10 @@ public class BibliotecaApp {
         return option;
     }
 
-    private int printBooksList(boolean bookAvailability, String messageToPrint) {
+    private int printBooksList(boolean bookAvailability, String messageIfNoBooks) {
         ArrayList<String> booksForPrint = giveBooksList(bookAvailability);
             if (booksForPrint.size() == 0) {
-                printStream.println(messageToPrint);
+                printStream.println(messageIfNoBooks);
             }
             else {
                 for (String bookForPrint : booksForPrint) {

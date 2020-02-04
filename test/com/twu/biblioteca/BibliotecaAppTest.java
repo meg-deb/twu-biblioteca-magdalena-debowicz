@@ -31,7 +31,7 @@ public class BibliotecaAppTest {
         inOrder = Mockito.inOrder(printStream);
         testBookList = createBookList();
         testMovieList = createMovieList();
-        app = new BibliotecaApp(testBookList, printStream, bufferedReader, testMovieList);
+        app = new BibliotecaApp(testBookList, testMovieList, printStream, bufferedReader);
     }
 
     private ArrayList<Book> createBookList() {
@@ -297,6 +297,23 @@ public class BibliotecaAppTest {
         inOrder.verify(printStream).println("Movie id: 23 | Doctor Sleep | Mike Flanagan | 2019 | Rating: 7.5");
         inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To see list of movies press 4. To exit, press 0.");
         inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
+    }
+
+    @Test
+    public void shouldReturnFalseWhenMovieStatusIsFirstChecked() {
+        assertThat(false, is(testMovieList.get(0).isCheckedOut()));
+        assertThat(false, is(testMovieList.get(1).isCheckedOut()));
+        assertThat(false, is(testMovieList.get(2).isCheckedOut()));
+    }
+
+    @Test
+    public void shouldReturnTrueWhenMovieIsCheckedOut() {
+        testMovieList.get(0).checkOutMovie();
+        assertThat(true, is(testMovieList.get(0).isCheckedOut()));
+        testMovieList.get(1).checkOutMovie();
+        assertThat(true, is(testMovieList.get(1).isCheckedOut()));
+        testMovieList.get(2).checkOutMovie();
+        assertThat(true, is(testMovieList.get(2).isCheckedOut()));
     }
 
 }
