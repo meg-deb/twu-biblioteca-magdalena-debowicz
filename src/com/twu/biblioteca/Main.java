@@ -39,7 +39,7 @@ public class Main {
     }
 
     private static User createUser(){
-        User meg = new User("123-4567", "Meg");
+        User meg = new User("Meg", "123-4567", "password222");
 
         return meg;
     }

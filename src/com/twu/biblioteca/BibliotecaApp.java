@@ -157,7 +157,9 @@ public class BibliotecaApp {
     public void loginUser() {
         printStream.println("Please log in by typing your library number:");
         String userLibraryNumber = readLine();
-        if(userLibraryNumber.equals(user.giveLibraryNumber())){
+        printStream.println("Please type in the password:");
+        String userPassword = readLine();
+        if(userLibraryNumber.equals(user.giveLibraryNumber()) && userPassword.equals(user.giveUserPassword())){
             printStream.println("You successfully logged in. Welcome " + user.giveUserName() + "!");
         }
         else{
