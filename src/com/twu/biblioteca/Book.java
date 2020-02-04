@@ -7,6 +7,8 @@ public class Book {
     private String author;
     private String year;
     private boolean checkedOut = false;
+    private String userThatCheckedOutBook;
+    private String userThatReturnedBook;
 
     //constructor declaration
     public Book( int id, String title, String author, String year){
@@ -24,12 +26,21 @@ public class Book {
         return checkedOut;
     }
 
-    public void checkOutBook(){
+    public void checkOutBook(String user){
         checkedOut = true;
+        userThatCheckedOutBook = user;
     }
 
-    public void returnBook(){
+    public void returnBook(String user){
         checkedOut = false;
+        userThatReturnedBook = user;
     }
 
+    public String getUserThatCheckedOut() {
+        return userThatCheckedOutBook;
+    }
+
+    public Object getUserThatReturned() {
+        return userThatReturnedBook;
+    }
 }

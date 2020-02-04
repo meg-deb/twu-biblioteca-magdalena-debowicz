@@ -46,8 +46,8 @@ public class BibliotecaApp {
                         printStream.println("Sorry, that book is not available");
                     } else {
                         printStream.println("You've chosen " + bookObjectList.get(checkOutBookIndex).giveBookDataAsString());
-                        bookObjectList.get(checkOutBookIndex).checkOutBook();
-                        printStream.println("Thank You! Enjoy the book");
+                        bookObjectList.get(checkOutBookIndex).checkOutBook(user.giveUserName());
+                        printStream.println("Thank You! Enjoy the book " + user.giveUserName());
                     }
                     break;
                 case "3":
@@ -62,8 +62,8 @@ public class BibliotecaApp {
                         printStream.println("That is not a valid book to return");
                     } else {
                         printStream.println("You've chosen " + bookObjectList.get(returnBookIndex).giveBookDataAsString());
-                        bookObjectList.get(returnBookIndex).returnBook();
-                        printStream.println("Thank You for returning the book");
+                        bookObjectList.get(returnBookIndex).returnBook(user.giveUserName());
+                        printStream.println("Thank You for returning the book " + user.giveUserName());
                     }
                     break;
                 case "4":
@@ -154,16 +154,18 @@ public class BibliotecaApp {
     }
 
 
-    public void loginUser() {
+    public boolean loginUser() {
         printStream.println("Please log in by typing your library number:");
         String userLibraryNumber = readLine();
         printStream.println("Please type in the password:");
         String userPassword = readLine();
         if(userLibraryNumber.equals(user.giveLibraryNumber()) && userPassword.equals(user.giveUserPassword())){
             printStream.println("You successfully logged in. Welcome " + user.giveUserName() + "!");
+            return true;
         }
         else{
-            printStream.println("Wrong library number!");
+            printStream.println("Wrong library number or password!");
+            return false;
         }
     }
 }

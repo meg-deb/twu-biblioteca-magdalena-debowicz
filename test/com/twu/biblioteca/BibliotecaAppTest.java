@@ -64,7 +64,7 @@ public class BibliotecaAppTest {
     }
 
     private static User createUser() {
-        User meg = new User("Meg", "123-4567", "password222");
+        User meg = new User("Meg", "123-4567", "222");
 
         return meg;
     }
@@ -142,7 +142,7 @@ public class BibliotecaAppTest {
         inOrder.verify(printStream).println("Book id: 3 | Doctor Sleep | Stephen King | 2013");
         inOrder.verify(printStream).println("To check out the selected book - type id number.");
         inOrder.verify(printStream).println("You've chosen Book id: 1 | The Shining | Stephen King | 1977");
-        inOrder.verify(printStream).println("Thank You! Enjoy the book");
+        inOrder.verify(printStream).println("Thank You! Enjoy the book Meg");
         inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3.\nTo see list of movies press 4. To checkout movie press 5. To exit, press 0.");
         inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
     }
@@ -155,18 +155,23 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void shouldReturnTrueWhenBookIsCheckedOut() {
-        testBookList.get(0).checkOutBook();
-        assertThat(true, is(testBookList.get(0).isCheckedOut()));
-        testBookList.get(1).checkOutBook();
-        assertThat(true, is(testBookList.get(1).isCheckedOut()));
-        testBookList.get(2).checkOutBook();
-        assertThat(true, is(testBookList.get(2).isCheckedOut()));
+    public void shouldReturnTrueAndUserWhenBookIsCheckedOut() {
+        testBookList.get(0).checkOutBook(testUser.giveUserName());
+        assertTrue(testBookList.get(0).isCheckedOut());
+        assertThat("Meg", is(testBookList.get(0).getUserThatCheckedOut()));
+
+        testBookList.get(1).checkOutBook(testUser.giveUserName());
+        assertTrue(testBookList.get(1).isCheckedOut());
+        assertThat("Meg", is(testBookList.get(1).getUserThatCheckedOut()));
+
+        testBookList.get(2).checkOutBook(testUser.giveUserName());
+        assertTrue(testBookList.get(2).isCheckedOut());
+        assertThat("Meg", is(testBookList.get(2).getUserThatCheckedOut()));
     }
 
     @Test
     public void shouldShowUpdatedBookListAfterCheckOut() throws IOException {
-        testBookList.get(0).checkOutBook();
+        testBookList.get(0).checkOutBook(testUser.giveUserName());
 
         when(bufferedReader.readLine()).thenReturn("1").thenReturn("0");
 
@@ -181,9 +186,9 @@ public class BibliotecaAppTest {
 
     @Test
     public void shouldPrintMessageWhenBookListEmpty() throws IOException {
-        testBookList.get(0).checkOutBook();
-        testBookList.get(1).checkOutBook();
-        testBookList.get(2).checkOutBook();
+        testBookList.get(0).checkOutBook(testUser.giveUserName());
+        testBookList.get(1).checkOutBook(testUser.giveUserName());
+        testBookList.get(2).checkOutBook(testUser.giveUserName());
 
         when(bufferedReader.readLine()).thenReturn("1").thenReturn("0");
 
@@ -197,7 +202,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void shouldPrintMessageWhenBookCheckedOut() throws IOException {
-        testBookList.get(0).checkOutBook();
+        testBookList.get(0).checkOutBook(testUser.giveUserName());
 
         when(bufferedReader.readLine()).thenReturn("2").thenReturn("1").thenReturn("2").thenReturn("1").thenReturn("0");
 
@@ -214,9 +219,9 @@ public class BibliotecaAppTest {
 
     @Test
     public void shouldNotAskForSelectionWhenAllBooksCheckedOut() throws IOException {
-        testBookList.get(0).checkOutBook();
-        testBookList.get(1).checkOutBook();
-        testBookList.get(2).checkOutBook();
+        testBookList.get(0).checkOutBook(testUser.giveUserName());
+        testBookList.get(1).checkOutBook(testUser.giveUserName());
+        testBookList.get(2).checkOutBook(testUser.giveUserName());
 
         when(bufferedReader.readLine()).thenReturn("2").thenReturn("0");
 
@@ -230,25 +235,28 @@ public class BibliotecaAppTest {
 
     @Test
     public void shouldReturnFalseWhenBookIsReturned() {
-        testBookList.get(0).checkOutBook();
+        testBookList.get(0).checkOutBook(testUser.giveUserName());
         assertThat(true, is(testBookList.get(0).isCheckedOut()));
-        testBookList.get(0).returnBook();
+        testBookList.get(0).returnBook(testUser.giveUserName());
         assertThat(false, is(testBookList.get(0).isCheckedOut()));
+        assertThat("Meg", is(testBookList.get(0).getUserThatReturned()));
 
-        testBookList.get(1).checkOutBook();
+        testBookList.get(1).checkOutBook(testUser.giveUserName());
         assertThat(true, is(testBookList.get(1).isCheckedOut()));
-        testBookList.get(1).returnBook();
+        testBookList.get(1).returnBook(testUser.giveUserName());
         assertThat(false, is(testBookList.get(1).isCheckedOut()));
+        assertThat("Meg", is(testBookList.get(0).getUserThatReturned()));
 
-        testBookList.get(2).checkOutBook();
+        testBookList.get(2).checkOutBook(testUser.giveUserName());
         assertThat(true, is(testBookList.get(2).isCheckedOut()));
-        testBookList.get(2).returnBook();
+        testBookList.get(2).returnBook(testUser.giveUserName());
         assertThat(false, is(testBookList.get(2).isCheckedOut()));
+        assertThat("Meg", is(testBookList.get(0).getUserThatReturned()));
     }
 
     @Test
     public void shouldShowMessageAndUpdatedBookListAfterBookReturn() throws IOException {
-        testBookList.get(0).checkOutBook();
+        testBookList.get(0).checkOutBook(testUser.giveUserName());
 
         when(bufferedReader.readLine()).thenReturn("1").thenReturn("3").thenReturn("1").thenReturn("1").thenReturn("0");
 
@@ -261,7 +269,7 @@ public class BibliotecaAppTest {
         inOrder.verify(printStream).println("Book id: 1 | The Shining | Stephen King | 1977");
         inOrder.verify(printStream).println("To return the selected book - type id number.");
         inOrder.verify(printStream).println("You've chosen Book id: 1 | The Shining | Stephen King | 1977");
-        inOrder.verify(printStream).println("Thank You for returning the book");
+        inOrder.verify(printStream).println("Thank You for returning the book Meg");
         inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3.\nTo see list of movies press 4. To checkout movie press 5. To exit, press 0.");
         inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
     }
@@ -280,7 +288,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void shouldPrintMessageWhenWrongInputOnBookReturn() throws IOException {
-        testBookList.get(0).checkOutBook();
+        testBookList.get(0).checkOutBook(testUser.giveUserName());
 
         when(bufferedReader.readLine()).thenReturn("3").thenReturn("2").thenReturn("0");
 
@@ -363,7 +371,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void shouldAskUserForLibraryNumberAndPasswordWhenLoginUserCalled() throws IOException {
-        when(bufferedReader.readLine()).thenReturn("123-4567").thenReturn("password222");
+        when(bufferedReader.readLine()).thenReturn("123-4567").thenReturn("222");
 
         app.loginUser();
 
