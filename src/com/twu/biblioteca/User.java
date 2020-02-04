@@ -4,12 +4,16 @@ public class User {
     private String userName;
     private String libraryNumber;
     private String password;
+    private String email;
+    private String phone;
 
 
-    public User(String userName, String libraryNumber, String password){
+    public User(String userName, String libraryNumber, String password, String email, String phone){
         this.userName = userName;
         this.libraryNumber = libraryNumber;
         this.password = password;
+        this.email = email;
+        this.phone = phone;
     }
 
     public String giveLibraryNumber() {
@@ -22,6 +26,10 @@ public class User {
 
     public String giveUserPassword() {
         return password;
+    }
+
+    public String giveUserInfo() {
+        return "User: " + userName + ", email: " + email + ", phone: " + phone;
     }
 
 }

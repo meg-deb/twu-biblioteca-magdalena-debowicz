@@ -39,9 +39,7 @@ public class Main {
     }
 
     private static User createUser(){
-        User meg = new User("Meg", "123-4567", "222");
-
-        return meg;
+        return new User("Meg", "123-4567", "222", "meg@com", "333444555");
     }
 
 

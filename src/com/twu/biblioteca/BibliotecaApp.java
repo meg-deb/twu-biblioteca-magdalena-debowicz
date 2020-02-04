@@ -28,7 +28,7 @@ public class BibliotecaApp {
 
     public void showMenu() {
         while (true) {
-            printStream.println("To see the list of books, press 1. To checkout book press 2. To return book press 3.\nTo see list of movies press 4. To checkout movie press 5. To exit, press 0.");
+            printStream.println("To see the list of books, press 1. To checkout book press 2. To return book press 3.\nTo see list of movies press 4. To checkout movie press 5. To see user information press 6. To exit, press 0.");
             String option = readLine();
             switch (option) {
                 case "1":
@@ -84,6 +84,9 @@ public class BibliotecaApp {
                         moviesObjectList.get(checkOutMovieIndex).checkOutMovie();
                         printStream.println("Thank You! Enjoy the movie.");
                     }
+                    break;
+                case "6":
+                    printStream.println(user.giveUserInfo());
                     break;
                 case "0":
                     printStream.println("You're exiting the application. Thank You and till next time.");
