@@ -26,7 +26,7 @@ public class BibliotecaApp {
 
     public void showMenu() {
         while (true) {
-            printStream.println("To see the list of books, press 1. To checkout book press 2. To return book press 3. To see list of movies press 4. To exit, press 0.");
+            printStream.println("To see the list of books, press 1. To checkout book press 2. To return book press 3.\nTo see list of movies press 4. To checkout movie press 5. To exit, press 0.");
             String option = readLine();
             switch (option) {
                 case "1":
@@ -65,7 +65,20 @@ public class BibliotecaApp {
                     }
                     break;
                 case "4":
-                    printMovieList();
+                    printMovieList(false, "Sorry no movies available!");
+                    break;
+                case "5":
+                    printMovieList(false, "Sorry no movies available!");
+                    printStream.println("To check out the selected movie - type id number.");
+                    String userMovieId = readLine();
+                    int checkOutMovieIndex = (Integer.parseInt(userMovieId) - 21);
+                    if (moviesObjectList.get(checkOutMovieIndex).isCheckedOut()) {
+                        printStream.println("Sorry, that movie is not available.");
+                    } else {
+                        printStream.println("You've chosen " + moviesObjectList.get(checkOutMovieIndex).giveMovieDataAsString());
+                        moviesObjectList.get(checkOutMovieIndex).checkOutMovie();
+                        printStream.println("Thank You! Enjoy the movie.");
+                    }
                     break;
                 case "0":
                     printStream.println("You're exiting the application. Thank You and till next time.");
@@ -112,10 +125,28 @@ public class BibliotecaApp {
         return booksList;
     }
 
-    private void printMovieList() {
-        for (Movie movie : moviesObjectList) {
-            printStream.println(movie.giveMovieDataAsString());
+    private int printMovieList(boolean moviesAvailability, String messageIfNoMovies) {
+        ArrayList<String> moviesForPrint = giveMoviesList(moviesAvailability);
+        if (moviesForPrint.size() == 0) {
+            printStream.println(messageIfNoMovies);
         }
+        else {
+            for (String movieForPrint : moviesForPrint) {
+                printStream.println(movieForPrint);
+            }
+        }
+        return moviesForPrint.size();
     }
+
+    private ArrayList<String> giveMoviesList(boolean movieAvailability) {
+        ArrayList<String> moviesList = new ArrayList<>();
+        for (Movie movie : moviesObjectList) {
+            if (movie.isCheckedOut() == movieAvailability) {
+                moviesList.add(movie.giveMovieDataAsString());
+            }
+        }
+        return moviesList;
+    }
+
 
 }
