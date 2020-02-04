@@ -11,12 +11,14 @@ public class BibliotecaApp {
     private BufferedReader bufferedReader;
     private ArrayList<Book> bookObjectList;
     private ArrayList<Movie> moviesObjectList;
+    private User user;
 
-    public BibliotecaApp(ArrayList<Book> bookObjectList,  ArrayList<Movie> moviesObjectList, PrintStream printStream, BufferedReader bufferedReader) {
-        this.printStream = printStream;
-        this.bufferedReader = bufferedReader;
+    public BibliotecaApp(ArrayList<Book> bookObjectList, ArrayList<Movie> moviesObjectList, User user, PrintStream printStream, BufferedReader bufferedReader) {
         this.bookObjectList = bookObjectList;
         this.moviesObjectList = moviesObjectList;
+        this.user = user;
+        this.printStream = printStream;
+        this.bufferedReader = bufferedReader;
     }
 
     public void giveWelcome() {
@@ -152,4 +154,14 @@ public class BibliotecaApp {
     }
 
 
+    public void loginUser() {
+        printStream.println("Please log in by typing your library number:");
+        String userLibraryNumber = readLine();
+        if(userLibraryNumber.equals(user.giveLibraryNumber())){
+            printStream.println("You successfully logged in. Welcome " + user.giveUserName() + "!");
+        }
+        else{
+            printStream.println("Wrong library number!");
+        }
+    }
 }

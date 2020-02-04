@@ -6,8 +6,9 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        BibliotecaApp app = new BibliotecaApp(createBookList(), createMovieList(), System.out, new BufferedReader(new InputStreamReader(System.in)));
+        BibliotecaApp app = new BibliotecaApp(createBookList(), createMovieList(), createUser(), System.out, new BufferedReader(new InputStreamReader(System.in)));
         app.giveWelcome();
+        app.loginUser();
         app.showMenu();
     }
 
@@ -36,5 +37,12 @@ public class Main {
 
         return movieObjectList;
     }
+
+    private static User createUser(){
+        User meg = new User("123-4567", "Meg");
+
+        return meg;
+    }
+
 
 }

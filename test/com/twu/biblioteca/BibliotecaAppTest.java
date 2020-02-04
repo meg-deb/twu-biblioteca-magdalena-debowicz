@@ -23,6 +23,7 @@ public class BibliotecaAppTest {
     private InOrder inOrder;
     private ArrayList<Book> testBookList;
     private ArrayList<Movie> testMovieList;
+    private User testUser;
 
     @Before
     public void setUp() {
@@ -31,7 +32,8 @@ public class BibliotecaAppTest {
         inOrder = Mockito.inOrder(printStream);
         testBookList = createBookList();
         testMovieList = createMovieList();
-        app = new BibliotecaApp(testBookList, testMovieList, printStream, bufferedReader);
+        testUser = createUser();
+        app = new BibliotecaApp(testBookList, testMovieList, testUser, printStream, bufferedReader);
     }
 
     private ArrayList<Book> createBookList() {
@@ -58,6 +60,12 @@ public class BibliotecaAppTest {
         movieObjectList.add(docSleep);
 
         return movieObjectList;
+    }
+
+    private static User createUser(){
+        User meg = new User("123-4567", "Meg");
+
+        return meg;
     }
 
 
@@ -350,6 +358,16 @@ inOrder.verify(printStream).println("You're exiting the application. Thank You a
         inOrder.verify(printStream).println("Sorry no movies available!");
         inOrder.verify(printStream).println("To see the list of books, press 1. To checkout book press 2. To return book press 3.\nTo see list of movies press 4. To checkout movie press 5. To exit, press 0.");
         inOrder.verify(printStream).println("You're exiting the application. Thank You and till next time.");
+    }
+
+    @Test
+    public void shouldAskUserForLibraryNumberAndWelcomeAfterCorrect() throws IOException {
+        when(bufferedReader.readLine()).thenReturn("123-4567").thenReturn("0");
+
+        app.loginUser();
+
+        inOrder.verify(printStream).println("Please log in by typing your library number:");
+        inOrder.verify(printStream).println("You successfully logged in. Welcome Meg!");
     }
 
 }
