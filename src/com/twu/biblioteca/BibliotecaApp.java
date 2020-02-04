@@ -68,7 +68,10 @@ public class BibliotecaApp {
                     printMovieList(false, "Sorry no movies available!");
                     break;
                 case "5":
-                    printMovieList(false, "Sorry no movies available!");
+                    int availableToCheckOutMoviesSize = printMovieList(false,"Sorry no movies available!");
+                    if(availableToCheckOutMoviesSize == 0){
+                        break;
+                    }
                     printStream.println("To check out the selected movie - type id number.");
                     String userMovieId = readLine();
                     int checkOutMovieIndex = (Integer.parseInt(userMovieId) - 21);

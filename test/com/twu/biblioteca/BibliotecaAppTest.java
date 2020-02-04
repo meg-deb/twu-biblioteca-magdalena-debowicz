@@ -337,7 +337,7 @@ inOrder.verify(printStream).println("You're exiting the application. Thank You a
     }
 
     @Test
-    public void shouldPrintMessageWhenMovieListEmpty() throws IOException {
+    public void shouldNotAskForSelectionWhenAllMoviesCheckedOut() throws IOException {
         testMovieList.get(0).checkOutMovie();
         testMovieList.get(1).checkOutMovie();
         testMovieList.get(2).checkOutMovie();
